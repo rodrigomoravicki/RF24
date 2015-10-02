@@ -66,26 +66,6 @@ protected:
   /**@{*/
 
   /**
-   * Set chip select pin
-   *
-   * Running SPI bus at PI_CLOCK_DIV2 so we don't waste time transferring data
-   * and best of all, we make use of the radio's FIFO buffers. A lower speed
-   * means we're less likely to effectively leverage our FIFOs and pay a higher
-   * AVR runtime cost as toll.
-   *
-   * @param mode HIGH to take this unit off the SPI bus, LOW to put it on
-   */
-  void csn(int mode);
-
-  /**
-   * Set chip enable
-   *
-   * @param level HIGH to actively begin transmission or LOW to put in standby.  Please see data sheet
-   * for a much more detailed description of this pin.
-   */
-  void ce(int level);
-
-  /**
    * Read a chunk of data in from a register
    *
    * @param reg Which register. Use constants from nRF24L01.h
@@ -236,6 +216,26 @@ public:
    * @param _cspin The pin attached to Chip Select
    */
   RF24(uint8_t _cepin, uint8_t _cspin);
+
+  /**
+   * Set chip select pin
+   *
+   * Running SPI bus at PI_CLOCK_DIV2 so we don't waste time transferring data
+   * and best of all, we make use of the radio's FIFO buffers. A lower speed
+   * means we're less likely to effectively leverage our FIFOs and pay a higher
+   * AVR runtime cost as toll.
+   *
+   * @param mode HIGH to take this unit off the SPI bus, LOW to put it on
+   */
+  void csn(int mode);
+
+  /**
+   * Set chip enable
+   *
+   * @param level HIGH to actively begin transmission or LOW to put in standby.  Please see data sheet
+   * for a much more detailed description of this pin.
+   */
+  void csn(int mode);
 
   /**
    * Begin operation of the chip
